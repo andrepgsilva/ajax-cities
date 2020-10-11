@@ -6,7 +6,7 @@ window.addEventListener('load', () => {
     const fetchPlaces = () => {
         const places = [];
 
-        return new Promise((resolve) => {
+        return new Promise(resolve => {
             fetch(endpoint)
             .then(response => {
                 return response.json();
@@ -20,10 +20,10 @@ window.addEventListener('load', () => {
 
     const findPlaces = () => {
 
-        return new Promise((resolve) => {
+        return new Promise(resolve => {
             const exp = new RegExp(placeInput.value, 'gi');
             fetchPlaces()
-            .then((places) => {
+            .then(places => {
                 $matchedPlaces = places.filter(place => {
                     if (placeInput.value != '') {
                         return place.city.match(exp) || place.state.match(exp);
@@ -34,7 +34,7 @@ window.addEventListener('load', () => {
         });
     };
 
-    const showPlaces = (places) => {
+    const showPlaces = places => {
         const html = places.map(place => {
             return `
                 <li>
